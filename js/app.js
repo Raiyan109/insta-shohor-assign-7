@@ -28,6 +28,7 @@ const reportPost = (id) => {
 };
 
 const displayContent = (text) => {
+  console.log(text)
   return text.length < 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
@@ -53,6 +54,7 @@ const switchTab = (id) => {
 
 const createPost = (post) => {
   const image = post.image;
+  console.log(image)
   const div = document.createElement("article");
   div.classList.add("post");
   div.innerHTML = `
@@ -63,7 +65,7 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="${post.userImage}" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -73,7 +75,7 @@ const createPost = (post) => {
                 </button>
               </div>
 
-              <div class="post__content">
+              <div class="post__content" >
                 <div class="post__medias">
                   <img
                     class="post__media"
@@ -161,6 +163,7 @@ const displayReportedPosts = () => {
 const loadPosts = async () => {
   let data = await fetch('../data/posts.json');
   posts = await data.json();
+  console.log(posts)
   showPosts(posts);
 }
 
